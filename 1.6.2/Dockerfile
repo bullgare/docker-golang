@@ -6,6 +6,10 @@ RUN apt-get update -y && apt-get install --no-install-recommends -y -q curl buil
 RUN mkdir /goroot && curl https://storage.googleapis.com/golang/go1.6.2.linux-amd64.tar.gz | tar xvzf - -C /goroot --strip-components=1
 RUN mkdir /gopath
 RUN mkdir -p /root/.ssh
+RUN touch /root/.ssh/id_rsa
+RUN chmod 0600 ./id_rsa
+RUN touch /root/.ssh/id_rsa.pub
+RUN chmod 0644 ./id_rsa.pub
 
 ENV GOROOT /goroot
 ENV GOPATH /gopath
